@@ -10,42 +10,42 @@ import java.util.List;
 public class MovieRepository {
 
     //movie
-    HashMap<String, Movie> movieMap = new HashMap<>();
+    HashMap<String, Movie> movieHm = new HashMap<>();
 
-    public void MovieReportAdditon(Movie movie) {
-        movieMap.put(movie.getName(), movie);
+    public void addMovieRepo(Movie movie) {
+        movieHm.put(movie.getName(), movie);
     }
 
-    public Movie MovieNameReport(String name) {
+    public Movie getMovieByNameRepo(String name) {
         try {
-            Movie curr = movieMap.get(name);
+            Movie curr = movieHm.get(name);
             return curr;
         } catch (Exception e) {
             return null;
         }
     }
-    public List<String> finalMoviesReport () {
+    public List<String> findAllMoviesRepo () {
         List<String> list = new ArrayList<>();
-        for (String movie : movieMap.keySet()
+        for (String movie : movieHm.keySet()
         ) {
             list.add(movie);
 
         }
         return list;
     }
-    public void movieDelete (String name){
-        movieMap.remove(name);
+    public void deleteMovie (String name){
+        movieHm.remove(name);
     }
 
     //director
     HashMap<String, Director> directorHm=new HashMap<>();
 
-    public void DirectorReportAdditon(Director director){
+    public void addDirectorRepo(Director director){
         directorHm.put(director.getName(),director);
     }
 
 
-    public Director directorNamereport(String name) {
+    public Director getDirectorByNameRepo(String name) {
         try {
             Director curr=directorHm.get(name);
             return curr;
@@ -69,7 +69,7 @@ public class MovieRepository {
 
 
 
-    public void moviePairAdd(String movieName, String directorName) {
+    public void addMovieDirectorPairRepo(String movieName, String directorName) {
         List<String> movieList;
         if(pairHm.containsKey(directorName)){
             movieList = pairHm.get(directorName);
@@ -84,7 +84,7 @@ public class MovieRepository {
     }
 
 
-    public List<String> moviesget(String directorName) {
+    public List<String> getMoviesByDirectorNameRepo(String directorName) {
         if(pairHm.containsKey(directorName)) {
             for (String curr : pairHm.keySet()) {
                 if (curr.equals(directorName)) {
@@ -97,14 +97,14 @@ public class MovieRepository {
     }
 
 
-    public void deleteReport(String directorName) {
+    public void deleteDirectorByNameRepo(String directorName) {
 
         if(pairHm.containsKey(directorName)){
 
             List<String> movieList=pairHm.get(directorName);
             for (String name:movieList
             ) {
-                deleteReport(name);
+                deleteMovie(name);
             }
 
             deleteDirector(directorName);
@@ -115,11 +115,11 @@ public class MovieRepository {
     }
 
 
-    public void AllreportDElete() {
+    public void deleteAllDirectorsRepo() {
         if(!pairHm.isEmpty()){
             for (String name:pairHm.keySet()){
 
-                deleteReport(name);
+                deleteDirectorByNameRepo(name);
 
             }
 

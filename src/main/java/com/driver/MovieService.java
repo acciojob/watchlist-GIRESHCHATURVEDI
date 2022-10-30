@@ -12,49 +12,49 @@ public class MovieService {
     private MovieRepository movieRepository;
 
     //movie
-    public void MovieServiceAdditon(Movie movie) {
-        movieRepository.MovieReportAdditon(movie);
+    public void addMovieService(Movie movie) {
+        movieRepository.addMovieRepo(movie);
     }
 
 
-    public Movie MovieServicegetName(String name) {
+    public Movie getMovieByNameService(String name) {
 
-        return movieRepository.MovieNameReport(name);
+        return movieRepository.getMovieByNameRepo(name);
     }
 
 
     public List<String> findAllMoviesService() {
-        return movieRepository.finalMoviesReport();
+        return movieRepository.findAllMoviesRepo();
     }
 
-    public void DirectorServiceAddition(Director director) {
-        movieRepository.DirectorReportAdditon(director);
+    public void addDirectorService(Director director) {
+        movieRepository.addDirectorRepo(director);
     }
 
 
     //Director
-    public Director DirecterSeviceName(String name) {
-        return movieRepository.directorNamereport(name);
+    public Director getDirectorByNameService(String name) {
+        return movieRepository.getDirectorByNameRepo(name);
     }
 
 
 
-    public void ServicePair(String movieName, String directorName) {
-        movieRepository.moviePairAdd(movieName, directorName);
+    public void addMovieDirectorPairService(String movieName, String directorName) {
+        movieRepository.addMovieDirectorPairRepo(movieName, directorName);
     }
 
 
-    public List<String> DirectorNmaeService(String directorName) {
-        return movieRepository.moviesget(directorName);
+    public List<String> getMoviesByDirectorNameService(String directorName) {
+        return movieRepository.getMoviesByDirectorNameRepo(directorName);
     }
 
 
-    public void deleteReport(String directorName) {
-        movieRepository.deleteReport(directorName);
+    public void deleteDirectorByNameService(String directorName) {
+        movieRepository.deleteDirectorByNameRepo(directorName);
     }
 
 
-    public void AllServiceDElete() {
-        movieRepository.AllreportDElete();
+    public void deleteAllDirectorsService() {
+        movieRepository.deleteAllDirectorsRepo();
     }
 }
